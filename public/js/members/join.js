@@ -1,4 +1,4 @@
-console.log('연결됌');
+console.log('연결됌 gdgd');
 
 let joinController = {
     param : {},
