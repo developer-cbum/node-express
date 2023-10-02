@@ -3,6 +3,8 @@ const ejs = require('ejs');
 const app = express();
 const routes = require('./routers');
 
+app.use(express.json());
+
 app.set('port', process.env.PORT || 3000);
 app.set('view engine', 'ejs');
 

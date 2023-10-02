@@ -10,6 +10,16 @@ exports.getMember = async (req, res, next) => {
   }
 };
 
+exports.checkMember = async (req, res, next) => {
+  let { memberEmail } = req.body;
+  try {
+    let rows = await MemberService.checkMember(memberEmail);
+    return res.json(rows[0]);
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+};
+
 exports.createMember = async (req, res, next) => {
   let member = req.body;
   try {

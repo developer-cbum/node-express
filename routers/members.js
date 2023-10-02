@@ -9,5 +9,6 @@ router.get('/join', MemberController.goToJoinForm);
 /* api */
 router.get('/api/member/:memberId', MemberApiController.getMember);
 router.post('/api/member', MemberApiController.createMember);
+router.post('/api/member/check', MemberApiController.checkMember);
 
 module.exports = router;
