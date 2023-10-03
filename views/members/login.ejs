@@ -20,12 +20,11 @@
   </head>
   <body>
     <div class="login-wrap">
-      <section>
+      <section id="login-section">
         <div class="logo-wrap">
           <img src="/images/logo2.png" alt="" />
         </div>
         <div class="login-wrap">
-          <form action="/members/login" method="post">
             <div class="mb-3">
               <label for="member-email" class="form-label">이메일 주소</label>
               <input
@@ -48,12 +47,12 @@
             </div>
             <div class="member-btn-wrap">
               <button type="button" class="btn btn-primary join-btn">회원가입</button>
-              <button type="submit" class="btn btn-primary login-btn">로그인</button>
+              <button type="button" class="btn btn-primary login-btn">로그인</button>
             </div>
-          </form>
         </div>
       </section>
     </div>
   </body>
   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="/js/members/login.js"></script>
 </html>

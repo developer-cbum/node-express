@@ -35,28 +35,19 @@ let joinController = {
     this.commonEvent(target);
   },
   commonEvent: function (target) {
-    target.find('.join-btn').on(
-      'click',
-      function () {
-        alert('들어옴');
-      }.bind(this)
-    );
+    target.find('.join-btn').on('click',(function () {
+        this.join();
+      }).bind(this));
 
-    this.$email.on(
-      'input',
-      function () {
+    this.$email.on('input',(function () {
         this.emailCheck();
         if (!this.emailCheck()) {
           this.checkId();
         }
-        this.joinCheck();
-      }.bind(this)
-    );
+        this.joinCheck();}).bind(this));
 
     //이름에 특수문자금지
-    this.$name.bind(
-      'input',
-      function () {
+    this.$name.bind('input',(function () {
         re = /[~!@\#$%^&*\()\-=+_']/gi;
         let temp = this.$name.val();
         if (re.test(temp)) {
@@ -74,13 +65,10 @@ let joinController = {
           this.nameFlag = false;
         }
         this.joinCheck();
-      }.bind(this)
-    );
+      }).bind(this));
 
     //비밀번호 검사
-    this.$password.on(
-      'input',
-      function () {
+    this.$password.on('input',(function () {
         if (this.nullPassword()) {
           this.$passTags.eq(2).text(`비밀번호 입력완료`).show();
           this.$notPassTags.eq(2).hide();
@@ -91,20 +79,16 @@ let joinController = {
           this.passwordFlag = false;
         }
         this.samePassword(this.sameCheckPassword());
-      }.bind(this)
-    );
+      }).bind(this));
 
     //비밀번호 확인
-    this.$checkPassword.on(
-      'input',
-      function () {
+    this.$checkPassword.on('input',(function () {
         if (!this.nullCheckPassword()) {
           this.$notPassTags.eq(3).text('비밀번호 확인를 입력해주세요').show();
           this.$passTags.eq(3).hide();
         }
         this.samePassword(this.sameCheckPassword());
-      }.bind(this)
-    );
+      }).bind(this));
   },
   getParam: function () {
     this.param = {};
@@ -173,6 +157,24 @@ let joinController = {
           self.$passTags.eq(1).hide();
           self.emailFlag = false;
         }
+      },
+    });
+  },
+  join: function () {
+    let member = {}
+    member.member_email = this.$email.val();
+    member.member_name = this.$name.val();
+    member.member_password = this.$password.val();
+
+    $.ajax({
+      url: '/api/member',
+      type: 'post',
+      data: JSON.stringify(member),
+      contentType: 'application/json',
+      success: function (data) {
+        console.log(data)
+        alert("회원 가입 성공")
+        location.href = `/login`
       },
     });
   },

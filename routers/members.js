@@ -10,5 +10,6 @@ router.get('/join', MemberController.goToJoinForm);
 router.get('/api/member/:memberId', MemberApiController.getMember);
 router.post('/api/member', MemberApiController.createMember);
 router.post('/api/member/check', MemberApiController.checkMember);
+router.post('/api/member/login', MemberApiController.loginMember);
 
 module.exports = router;

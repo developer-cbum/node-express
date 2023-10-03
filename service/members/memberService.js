@@ -21,6 +21,16 @@ exports.checkMember = async (memberEmail) => {
   }
 };
 
+exports.loginMember = async (memberEmail, memberPassword) => {
+  try {
+    let data = await pool.query(MemberQuery.loginMember, [memberEmail,memberPassword]);
+    return data[0];
+  } catch (err) {
+    console.log(err);
+    throw Error(err);
+  }
+};
+
 exports.insertMember = async (member) => {
   try {
     let result = await pool.query(MemberQuery.insertMember, member);
