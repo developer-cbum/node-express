@@ -4,6 +4,7 @@ const MemberController = require('../controller/member/memberController');
 const MemberApiController = require('../controller/member/memberApiController');
 
 router.get('/login', MemberController.goToLoginForm);
+router.get('/logout', MemberController.logout);
 router.get('/join', MemberController.goToJoinForm);
 
 /* api */

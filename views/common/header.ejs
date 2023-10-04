@@ -2,8 +2,12 @@
         <div class="header-wrap">
             <a href="/"><div class="main-logo"><img src="/images/logo2.png" alt="" /></div></a>
             <div class="header-right-wrap">
-                        <a href="/"><div class="home">Home</div></a><span>|</span>
-                        <a href="/"><div class="login">Login</div></a>
+                <a href="/"><div class="home">Home</div></a><span>|</span>
+                <% if(memberId === undefined){ %>
+                    <a href="/login"><div class="login">Login</div></a>
+                <% } else { %>
+                    <a href="/logout"><div class="login">logout</div></a>
+                <% } %>
             </div>
         </div>
     </header>

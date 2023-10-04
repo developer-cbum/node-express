@@ -19,7 +19,6 @@ let loginController = {
         }).bind(this))
 
         this.$loginBtn.on("click",(function(){
-            alert("들어옴")
             this.login()
         }).bind(this))
     },
@@ -37,7 +36,7 @@ let loginController = {
             contentType: 'application/json',
             success: function (data) {
               alert("로그인 성공")
-              location.href = '/'
+              data.loginCheck ? location.href = '/write' : location.href = "/"
             },
             error : function(){
                 alert("로그인 실패")

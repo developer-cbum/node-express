@@ -14,9 +14,11 @@ exports.loginMember = async (req, res, next) => {
   let { memberEmail,memberPassword } = req.body;
   try {
     let rows = await MemberService.loginMember(memberEmail,memberPassword);
-    console.log("여기")
-    console.log(rows)
     req.session.memberId =rows[0].memberId;
+    if(req.session.loginCheck){
+       rows[0].loginCheck = req.session.loginCheck;
+       delete req.session.loginCheck;
+    }
     return res.json(rows[0]);
   } catch (err) {
     return res.status(500).json(err);

@@ -4,6 +4,7 @@ const PostController = require('../controller/post/postController');
 const PostApiController = require('../controller/post/postApiController');
 
 router.get('/', PostController.goToList);
+router.get('/write', PostController.goToWrite);
 
 /* api */
 router.get('/api/post/:postId', PostApiController.getPost);
