@@ -16,7 +16,7 @@ exports.getPosts = async (req, res, next) => {
   const limitValue = parseInt(limit);
   try {
     let posts = await PostService.getPosts(offsetValue, limitValue);
-    return res.json(posts);
+    return res.json(posts[0]);
   } catch (err) {
     return res.status(500).json(err);
   }
